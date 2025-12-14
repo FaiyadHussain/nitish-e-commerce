@@ -1,0 +1,183 @@
+/* Luxury E-commerce Global Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Luxury Dark Theme Colors */
+  --color-black: #0a0a0a;
+  --color-charcoal: #1a1a1a;
+  --color-dark-gray: #2a2a2a;
+  --color-beige: #d4c5b9;
+  --color-beige-light: #e8ddd5;
+  --color-beige-dark: #b8a99d;
+  --color-white: #ffffff;
+  --color-gray: #6b6b6b;
+  --color-light-gray: #9a9a9a;
+  
+  /* Typography */
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Poppins', sans-serif;
+  --font-accent: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+  
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: var(--color-light-gray);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-beige);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-beige-dark);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-beige);
+  color: var(--color-black);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  transition: var(--transition-smooth);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Smooth Scroll Container */
+.smooth-scroll {
+  overflow: hidden;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Mobile First Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .section-padding {
+    padding: var(--spacing-lg) 0;
+  }
+
+  /* Fix mobile scroll issues */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+  }
+
+  /* Prevent double-tap zoom on buttons */
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
+  /* Better touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+

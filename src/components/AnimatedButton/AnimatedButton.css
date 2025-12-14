@@ -1,0 +1,86 @@
+.animated-btn {
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.btn-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d4c5b9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.animated-btn:hover .btn-bg {
+  transform: translateX(0);
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: #d4c5b9;
+  border: 1px solid #d4c5b9;
+}
+
+.btn-primary:hover .btn-text {
+  color: #0a0a0a;
+}
+
+.btn-secondary {
+  background-color: #d4c5b9;
+  color: #0a0a0a;
+}
+
+.btn-secondary:hover .btn-text {
+  color: #0a0a0a;
+}
+
+.btn-secondary .btn-bg {
+  background-color: #ffffff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.btn-outline:hover .btn-text {
+  color: #0a0a0a;
+}
+
+.btn-sm {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.8rem;
+}
+
+.btn-lg {
+  padding: 1.25rem 3rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .animated-btn {
+    padding: 0.875rem 2rem;
+    font-size: 0.85rem;
+  }
+}
+

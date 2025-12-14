@@ -1,0 +1,52 @@
+.wishlist-page {
+  min-height: 100vh;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+.wishlist-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.wishlist-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #9a9a9a;
+  margin-bottom: 3rem;
+}
+
+.wishlist-empty {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.wishlist-empty h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.wishlist-empty p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #9a9a9a;
+  margin-bottom: 2rem;
+}
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
