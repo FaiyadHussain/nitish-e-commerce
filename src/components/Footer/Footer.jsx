@@ -9,7 +9,9 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3 className="footer-logo">LUXURY</h3>
+            <div className="footer-logo">
+              <img src="/J_A_name-removebg-preview.png" alt="JACOB ATELIER" className="footer-logo-img" />
+            </div>
             <p className="footer-description">
               Elevating style with timeless elegance and modern sophistication.
             </p>
@@ -63,7 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} LUXURY. All rights reserved.</p>
+          <p>&copy; {currentYear} JACOB ATELIER. All rights reserved.</p>
           <div className="footer-legal">
             <a href="#">Privacy Policy</a>
             <span>•</span>

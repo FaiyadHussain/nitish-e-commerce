@@ -249,7 +249,7 @@ const Home = () => {
 
       {/* Marquee Section */}
       <section className="marquee-section">
-        <MarqueeText text="LUXURY FASHION • PREMIUM QUALITY • TIMELESS STYLE • " />
+        <MarqueeText text="JACOB ATELIER • PREMIUM QUALITY • TIMELESS STYLE • " />
       </section>
 
       {/* Featured Products */}

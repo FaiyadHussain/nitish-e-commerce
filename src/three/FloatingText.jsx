@@ -16,7 +16,7 @@ const FloatingText = ({ text, position, fontSize = 0.5 }) => {
       ref={textRef}
       position={position}
       fontSize={fontSize}
-      color="#d4c5b9"
+      color="#ffffff"
       font="/fonts/PlayfairDisplay-Bold.ttf"
       anchorX="center"
       anchorY="middle"

@@ -105,10 +105,10 @@ const ProductDetails = () => {
                             : color === 'Navy'
                             ? '#001f3f'
                             : color === 'Beige'
-                            ? '#d4c5b9'
+                            ? '#ffffff'
                             : color === 'Gray'
                             ? '#808080'
-                            : '#d4c5b9',
+                            : '#ffffff',
                       }}
                     >
                       {color !== 'White' && color !== 'Black' && color !== 'Navy' && color !== 'Beige' && color !== 'Gray' ? color : ''}

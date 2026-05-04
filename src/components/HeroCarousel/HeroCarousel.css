@@ -4,7 +4,7 @@
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-container {
@@ -49,7 +49,7 @@
   background: linear-gradient(
     135deg,
     rgba(10, 10, 10, 0.25) 0%,
-    rgba(212, 197, 185, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 50%,
     rgba(10, 10, 10, 0.4) 100%
   );
   z-index: 2;
@@ -64,7 +64,7 @@
   height: 100%;
   background: radial-gradient(
     circle at 70% 40%,
-    rgba(212, 197, 185, 0.15) 0%,
+    rgba(255, 255, 255, 0.15) 0%,
     transparent 60%
   );
   z-index: 3;
@@ -80,9 +80,9 @@
   height: 50px;
   background: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 197, 185, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  color: #d4c5b9;
+  color: #ffffff;
   cursor: pointer;
   z-index: 10;
   display: flex;
@@ -97,8 +97,8 @@
 }
 
 .carousel-nav:hover {
-  background: rgba(212, 197, 185, 0.2);
-  border-color: #d4c5b9;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -126,20 +126,20 @@
   height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.4);
-  border: 2px solid rgba(212, 197, 185, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
 }
 
 .carousel-dot:hover {
-  background: rgba(212, 197, 185, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   transform: scale(1.2);
 }
 
 .carousel-dot.active {
-  background: #d4c5b9;
-  border-color: #d4c5b9;
+  background: #ffffff;
+  border-color: #ffffff;
   width: 30px;
   border-radius: 5px;
 }
@@ -158,7 +158,7 @@
 
 .carousel-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #d4c5b9, #b8a99d);
+  background: linear-gradient(90deg, #0a0a0a, #666666);
   width: 0%;
   animation: progress 4s linear infinite;
 }

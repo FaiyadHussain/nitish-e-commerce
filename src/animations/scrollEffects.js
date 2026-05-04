@@ -11,7 +11,7 @@ export const navbarScroll = (navbar) => {
     end: 'bottom bottom',
     onEnter: () => {
       gsap.to(navbar, {
-        backgroundColor: 'rgba(10, 10, 10, 0.95)',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(10px)',
         duration: 0.3,
       });

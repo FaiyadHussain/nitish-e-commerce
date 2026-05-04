@@ -263,7 +263,7 @@ const MobileHome = () => {
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content-mobile">
-          <h1 className="hero-brand-name">LUXURY</h1>
+          <h1 className="hero-brand-name">JACOB ATELIER</h1>
           <p className="hero-tagline">Timeless Elegance</p>
         </div>
         <div ref={scrollIndicatorRef} className="scroll-indicator">

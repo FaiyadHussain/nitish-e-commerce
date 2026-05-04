@@ -1,6 +1,6 @@
 .footer {
-  background-color: #0a0a0a;
-  border-top: 1px solid rgba(212, 197, 185, 0.1);
+  background-color: #f9f9f9;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   padding: 4rem 0 2rem;
   margin-top: 6rem;
 }
@@ -25,17 +25,20 @@
 }
 
 .footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #d4c5b9;
-  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-description {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
-  color: #9a9a9a;
+  color: #4a4a4a;
   line-height: 1.6;
   max-width: 300px;
 }
@@ -51,22 +54,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(212, 197, 185, 0.3);
-  color: #d4c5b9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #0a0a0a;
   transition: all 0.3s ease;
 }
 
 .footer-social a:hover {
-  background-color: #d4c5b9;
-  color: #0a0a0a;
-  border-color: #d4c5b9;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  border-color: #0a0a0a;
 }
 
 .footer-title {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #0a0a0a;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
@@ -82,12 +85,12 @@
 .footer-links a {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
-  color: #9a9a9a;
+  color: #4a4a4a;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #d4c5b9;
+  color: #000000;
 }
 
 .footer-bottom {
@@ -95,7 +98,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(212, 197, 185, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom p {
@@ -118,7 +121,7 @@
 }
 
 .footer-legal a:hover {
-  color: #d4c5b9;
+  color: #ffffff;
 }
 
 .footer-legal span {

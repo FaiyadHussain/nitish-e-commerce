@@ -3,16 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Luxury Dark Theme Colors */
-  --color-black: #0a0a0a;
-  --color-charcoal: #1a1a1a;
-  --color-dark-gray: #2a2a2a;
-  --color-beige: #d4c5b9;
-  --color-beige-light: #e8ddd5;
-  --color-beige-dark: #b8a99d;
-  --color-white: #ffffff;
+  /* Monochrome Light Theme Colors */
+  --color-bg: #ffffff;
+  --color-text: #0a0a0a;
+  --color-accent: #0a0a0a;
+  --color-accent-light: #333333;
+  --color-accent-dark: #000000;
   --color-gray: #6b6b6b;
-  --color-light-gray: #9a9a9a;
+  --color-light-gray: #4a4a4a;
+  
+  /* Legacy color aliases for existing component compatibility */
+  --color-black: var(--color-bg);
+  --color-white: var(--color-text);
+  --color-beige: var(--color-accent);
+  --color-beige-light: var(--color-accent-light);
+  --color-beige-dark: var(--color-accent-dark);
   
   /* Typography */
   --font-primary: 'Playfair Display', serif;
@@ -44,8 +49,8 @@ html {
 
 body {
   font-family: var(--font-secondary);
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -75,7 +80,8 @@ h3 {
 
 p {
   font-size: clamp(1rem, 1.2vw, 1.125rem);
-  color: var(--color-light-gray);
+  color: var(--color-text);
+  opacity: 0.8;
 }
 
 /* Custom Scrollbar */
@@ -84,7 +90,7 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-black);
+  background: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {

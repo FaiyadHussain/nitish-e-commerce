@@ -49,9 +49,12 @@ const Loader = ({ onComplete }) => {
   return (
     <div ref={loaderRef} className="loader">
       <div className="loader-content">
-        <h1 ref={textRef} className="loader-text">
-          LUXURY
-        </h1>
+        <img 
+          ref={textRef} 
+          src="/J_A-removebg-preview.png" 
+          alt="JACOB ATELIER" 
+          className="loader-logo-img" 
+        />
         <div className="loader-progress">
           <div ref={progressRef} className="loader-progress-bar"></div>
         </div>

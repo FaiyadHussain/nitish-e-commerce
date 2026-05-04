@@ -47,7 +47,7 @@ const ScrollCharacter = () => {
       {/* Head */}
       <group ref={headRef}>
         <Sphere args={[0.3, 32, 32]} position={[0, 1.2, 0]}>
-          <meshStandardMaterial color="#d4c5b9" />
+          <meshStandardMaterial color="#ffffff" />
         </Sphere>
         
         {/* Eyes */}
@@ -62,19 +62,19 @@ const ScrollCharacter = () => {
       {/* Body */}
       <group ref={bodyRef}>
         <Box args={[0.4, 0.8, 0.3]} position={[0, 0.5, 0]}>
-          <meshStandardMaterial color="#b8a99d" />
+          <meshStandardMaterial color="#cccccc" />
         </Box>
       </group>
       
       {/* Arms */}
       <group ref={leftArmRef}>
         <Box args={[0.15, 0.6, 0.15]} position={[-0.3, 0.5, 0]} rotation={[0, 0, 0.2]}>
-          <meshStandardMaterial color="#d4c5b9" />
+          <meshStandardMaterial color="#ffffff" />
         </Box>
       </group>
       <group ref={rightArmRef}>
         <Box args={[0.15, 0.6, 0.15]} position={[0.3, 0.5, 0]} rotation={[0, 0, -0.2]}>
-          <meshStandardMaterial color="#d4c5b9" />
+          <meshStandardMaterial color="#ffffff" />
         </Box>
       </group>
       

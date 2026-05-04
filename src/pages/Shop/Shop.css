@@ -6,20 +6,20 @@
 .shop-hero {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: #0a0a0a;
+  background-color: #ffffff;
 }
 
 .shop-hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 6vw, 5rem);
-  color: #ffffff;
+  color: #0a0a0a;
   margin-bottom: 1rem;
 }
 
 .shop-hero p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
-  color: #9a9a9a;
+  color: #4a4a4a;
 }
 
 .shop-filters {
@@ -27,14 +27,14 @@
   gap: 3rem;
   margin-bottom: 3rem;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba(212, 197, 185, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .filter-group h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #0a0a0a;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
@@ -50,23 +50,23 @@
   padding: 0.5rem 1.5rem;
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
-  color: #9a9a9a;
+  color: #666666;
   background-color: transparent;
-  border: 1px solid rgba(212, 197, 185, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: capitalize;
 }
 
 .filter-btn:hover {
-  border-color: #d4c5b9;
-  color: #d4c5b9;
+  border-color: #0a0a0a;
+  color: #0a0a0a;
 }
 
 .filter-btn.active {
-  background-color: #d4c5b9;
-  color: #0a0a0a;
-  border-color: #d4c5b9;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  border-color: #0a0a0a;
 }
 
 .shop-results {

@@ -15,7 +15,7 @@ const HeroModel = () => {
   return (
     <Sphere ref={meshRef} args={[1, 100, 200]} scale={2}>
       <MeshDistortMaterial
-        color="#d4c5b9"
+        color="#ffffff"
         attach="material"
         distort={0.3}
         speed={2}
