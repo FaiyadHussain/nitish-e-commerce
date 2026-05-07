@@ -25,6 +25,7 @@ const Home = () => {
   const rightSideRef = useRef(null);
   const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(true);
 
   useEffect(() => {
     // Check if mobile

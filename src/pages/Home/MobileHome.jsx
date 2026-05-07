@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedBackground from '../../components/AnimatedBackground/AnimatedBackground';
 import AnimatedButton from '../../components/AnimatedButton/AnimatedButton';
+import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
 import './MobileHome.css';
 
 const MobileHome = () => {
@@ -13,7 +14,6 @@ const MobileHome = () => {
   const productStoryRef = useRef(null);
   const menWomenRef = useRef(null);
   const collectionCardsRef = useRef(null);
-  const [mobileHeroIndex, setMobileHeroIndex] = useState(0);
   const descriptionRef = useRef(null);
   const imageScrollRef = useRef(null);
   const ctaRef = useRef(null);
@@ -21,10 +21,8 @@ const MobileHome = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Rotate mobile hero background images
-    const mobileImages = ['/nitish_brand-1.JPG', '/nitish_brand-2.JPG', '/nitish_brand-3.JPG'];
-    const rotate = () => setMobileHeroIndex((prev) => (prev + 1) % mobileImages.length);
-    const mobileInterval = setInterval(rotate, 3500);
+    // Mobile now uses the shared HeroCarousel for pic/video sequence.
+    // No rotating background interval required here.
 
     // Hero Section Animation
     if (heroRef.current) {
@@ -243,7 +241,6 @@ const MobileHome = () => {
     }
 
     return () => {
-      clearInterval(mobileInterval);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -258,20 +255,28 @@ const MobileHome = () => {
   return (
     <div className="mobile-home">
       <AnimatedBackground variant="default" intensity="low" />
+
       {/* SECTION 1: FULL-SCREEN HERO */}
       <section ref={heroRef} className="hero-section-mobile">
         <div className="hero-image-wrapper">
-          <img
-            src={["/nitish_brand-1.JPG","/nitish_brand-2.JPG","/nitish_brand-3.JPG"][mobileHeroIndex]}
-            alt="Luxury Fashion"
-            className="hero-image"
-          />
+          {/* Full-screen hero carousel (uses same pic–video sequence as desktop) */}
+          <HeroCarousel />
+
           <div className="hero-overlay"></div>
         </div>
+
+        {/* Brand images row */}
+        {/* <div className="mobile-brand-row">
+          <img src="/nitish_brand-1.JPG" alt="brand 1" className="mobile-brand-img" />
+          <img src="/nitish_brand-2.JPG" alt="brand 2" className="mobile-brand-img" />
+          <img src="/nitish_brand-3.JPG" alt="brand 3" className="mobile-brand-img" />
+        </div> */}
+
         <div className="hero-content-mobile">
           <h1 className="hero-brand-name">JACOB ATELIER</h1>
           <p className="hero-tagline">Timeless Elegance</p>
         </div>
+
         <div ref={scrollIndicatorRef} className="scroll-indicator">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
@@ -323,11 +328,7 @@ const MobileHome = () => {
       <section ref={collectionCardsRef} className="collection-cards-section">
         <div className="collection-cards-container">
           {collections.map((collection, index) => (
-            <Link
-              key={index}
-              to={collection.link}
-              className="collection-card"
-            >
+            <Link key={index} to={collection.link} className="collection-card">
               <div className="card-image">
                 <img src={collection.image} alt={collection.name} />
                 <div className="card-overlay"></div>
@@ -387,4 +388,3 @@ const MobileHome = () => {
 };
 
 export default MobileHome;
-

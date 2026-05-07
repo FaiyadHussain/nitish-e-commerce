@@ -38,10 +38,12 @@
   object-fit: contain;
   transition: transform 0.3s ease;
   margin: 0;
+  transform-origin: center;
+  transform: scale(2.0);
 }
 
 .navbar-logo:hover .logo-img {
-  transform: scale(1.05);
+  transform: translateY(-3px) scale(1.6);
 }
 
 .navbar-links {
@@ -166,6 +168,7 @@
   .navbar .navbar-logo .logo-img {
     filter: invert(1) brightness(2) saturate(0.9);
     height: 46px;
+    transform: scale(2.6);
   }
 
   .navbar .navbar-link {
@@ -195,7 +198,7 @@
 }
 
 .logo-img-mobile {
-  height: 80px;
+  height: 96px;
   width: auto;
   object-fit: contain;
 }
@@ -274,8 +277,9 @@
   }
 
   .logo-img {
-    height: 80px;
+    height: 60px;
     margin: 0;
+    transform: scale(2.0);
   }
 
   .navbar-actions {
