@@ -8,16 +8,10 @@ const HeroCarousel = () => {
   const timeoutRef = useRef(null);
   const endedHandlerRef = useRef(null);
 
-  // slides: mix of video and image. Sequence: video(brand1) -> image(brand2) -> video(brand1) -> image(brand3)
+  // slides: only intro video then the final closeup image (nitish_brand-3)
   const slides = [
-    // 1) Intro video (poster shows last-name closeup)
     { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG', alt: 'Brand Video', focus: 'name' },
-    // 2) Closeup image 1 (name)
-    { type: 'image', url: '/nitish_brand-1.JPG', alt: 'Name Closeup 1', focus: 'name' },
-    // 3) Closeup image 2 (name)
-    { type: 'image', url: '/nitish_brand-2.JPG', alt: 'Name Closeup 2', focus: 'name' },
-    // 4) Closeup image 3 (name)
-    { type: 'image', url: '/nitish_brand-3.JPG', alt: 'Name Closeup 3', focus: 'name' },
+    { type: 'image', url: '/nitish_brand-3.JPG', alt: 'Name Closeup', focus: 'name' },
   ];
 
   useEffect(() => {
@@ -93,7 +87,7 @@ const HeroCarousel = () => {
       // reschedule next as a fallback (some browsers block autoplay/ended may not fire)
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       const slide = slides[currentIndex];
-      const duration = slide.type === 'video' ? 2000 : 3500;
+      const duration = slide.type === 'video' ? 6000 : 3500; // video fallback 6s
       timeoutRef.current = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
       }, duration);

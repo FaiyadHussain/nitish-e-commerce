@@ -24,18 +24,15 @@ const Home = () => {
   const productsRef = useRef(null);
   const rightSideRef = useRef(null);
   const videoRef = useRef(null);
-  const img1Ref = useRef(null);
-  const img2Ref = useRef(null);
   const img3Ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const timeoutRef = useRef(null);
 
   // Background media sequence: video -> image1 -> image2 -> image3 -> loop
+  // Only play video, then show nitish_brand-3.JPG as the single closeup image
   const backgroundMedia = [
     { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG' },
-    { type: 'image', src: '/nitish_brand-1.JPG', ref: img1Ref },
-    { type: 'image', src: '/nitish_brand-2.JPG', ref: img2Ref },
     { type: 'image', src: '/nitish_brand-3.JPG', ref: img3Ref },
   ];
 
@@ -255,7 +252,7 @@ const Home = () => {
       timeoutRef.current = setTimeout(() => {
         switchToNext();
       }, 3500);
-      
+
       return () => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
       };
@@ -265,33 +262,17 @@ const Home = () => {
   // Fade transition between media
   useEffect(() => {
     const videoElement = videoRef.current;
-    const img1 = img1Ref.current;
-    const img2 = img2Ref.current;
     const img3 = img3Ref.current;
-    const images = [img1, img2, img3];
     const currentMedia = backgroundMedia[currentMediaIndex];
 
     if (currentMedia.type === 'video') {
-      // Fade out all images, fade in video
-      gsap.to(videoElement, { opacity: 1, duration: 0.8 });
-      images.forEach(img => {
-        if (img) gsap.to(img, { opacity: 0, duration: 0.8 });
-      });
+      // Fade out image, fade in video
+      if (videoElement) gsap.to(videoElement, { opacity: 1, duration: 0.8 });
+      if (img3) gsap.to(img3, { opacity: 0, duration: 0.8 });
     } else {
-      // Fade out video, fade in current image
-      gsap.to(videoElement, { opacity: 0, duration: 0.8 });
-      
-      // Map currentMediaIndex to images array index (backgroundMedia: [video, img1, img2, img3])
-      const activeImageIndex = currentMediaIndex - 1; // image refs array is 0-based
-
-      images.forEach((img, idx) => {
-        if (!img) return;
-        if (idx === activeImageIndex && activeImageIndex >= 0) {
-          gsap.to(img, { opacity: 1, duration: 0.8 });
-        } else {
-          gsap.to(img, { opacity: 0, duration: 0.8 });
-        }
-      });
+      // Fade out video, fade in the single closeup image
+      if (videoElement) gsap.to(videoElement, { opacity: 0, duration: 0.8 });
+      if (img3) gsap.to(img3, { opacity: 1, duration: 0.8 });
     }
   }, [currentMediaIndex]);
 
@@ -320,24 +301,10 @@ const Home = () => {
             style={{ opacity: backgroundMedia[currentMediaIndex].type === 'video' ? 1 : 0 }}
           />
           <img
-            ref={img1Ref}
-            className="hero-bg-image"
-            src="/nitish_brand-1.JPG"
-            alt="Background 1"
-            style={{ opacity: 0 }}
-          />
-          <img
-            ref={img2Ref}
-            className="hero-bg-image"
-            src="/nitish_brand-2.JPG"
-            alt="Background 2"
-            style={{ opacity: 0 }}
-          />
-          <img
             ref={img3Ref}
             className="hero-bg-image"
             src="/nitish_brand-3.JPG"
-            alt="Background 3"
+            alt="Background"
             style={{ opacity: 0 }}
           />
           <div className="hero-bg-overlay"></div>

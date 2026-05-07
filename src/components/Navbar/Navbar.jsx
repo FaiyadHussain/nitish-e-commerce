@@ -69,18 +69,115 @@ const Navbar = () => {
           </Link>
 
           <ul className="navbar-links">
-            {navLinks.map((link) => (
-              <li key={link.path}>
-                <Link
-                  to={link.path}
-                  className={`navbar-link ${
-                    location.pathname === link.path ? 'active' : ''
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link to="/" className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
+            </li>
+            <li>
+              <Link to="/shop" className={`navbar-link ${location.pathname === '/shop' ? 'active' : ''}`}>Shop</Link>
+            </li>
+
+            {/* MEN dropdown */}
+            <li className="nav-dropdown">
+              <span className="navbar-link">MEN</span>
+              <div className="dropdown-menu">
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Top Rated</div>
+                  <ul>
+                    <li><Link to="/shop?category=T-Shirts">T-Shirts</Link></li>
+                    <li><Link to="/shop?category=Shirts">Shirts</Link></li>
+                    <li><Link to="/shop?category=SweatShirts">SweatShirts</Link></li>
+                  </ul>
+                </div>
+
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Hoodies</div>
+                  <ul>
+                    <li><Link to="/shop?category=Hoodies">Hoodies</Link></li>
+                    <li className="submenu-parent">Jackets
+                      {/* <ul className="submenu">
+                        <li><Link to="/shop?category=Jackets">Light Jackets</Link></li>
+                        <li><Link to="/shop?category=Leather">Leather Jackets</Link></li>
+                      </ul> */}
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Bottom Wear</div>
+                  <ul>
+                    <li><Link to="/shop?category=Jeans">Jeans</Link></li>
+                    <li><Link to="/shop?category=Trousers">Trousers</Link></li>
+                    <li><Link to="/shop?category=Formal">Formal</Link></li>
+                  </ul>
+                </div>
+
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Accessories</div>
+                  <ul>
+                    <li><Link to="/shop?category=Accessories">Accessories</Link></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            {/* WOMEN dropdown */}
+            <li className="nav-dropdown">
+              <span className="navbar-link">WOMEN</span>
+              <div className="dropdown-menu">
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Top Wear</div>
+                  <ul>
+                    <li><Link to="/shop?category=WomenTopWear">Top Wear</Link></li>
+                  </ul>
+                </div>
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Bottom Wear</div>
+                  <ul>
+                    <li><Link to="/shop?category=WomenBottomWear">Bottom Wear</Link></li>
+                  </ul>
+                </div>
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Accessories</div>
+                  <ul>
+                    <li><Link to="/shop?category=WomenAccessories">Accessories</Link></li>
+                    <li className="coming-soon">Coming Soon</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+ <li className="nav-dropdown">
+              <span className="navbar-link">Accessories</span>
+              <div className="dropdown-menu">
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Top Wear</div>
+                  <ul>
+                    <li><Link to="/shop?category=WomenTopWear">Top Wear</Link></li>
+                  </ul>
+                </div>
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Bottom Wear</div>
+                  <ul>
+                    <li><Link to="/shop?category=WomenBottomWear">Bottom Wear</Link></li>
+                  </ul>
+                </div>
+                <div className="dropdown-col">
+                  <div className="dropdown-heading">Accessories</div>
+                  <ul>
+                    <li><Link to="/shop?category=WomenAccessories">Accessories</Link></li>
+                    <li className="coming-soon">Coming Soon</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li>
+              <Link to="/about" className={`navbar-link ${location.pathname === '/about' ? 'active' : ''}`}>About</Link>
+            </li>
+            <li>
+              <Link to="/contact" className={`navbar-link ${location.pathname === '/contact' ? 'active' : ''}`}>Contact</Link>
+            </li>
           </ul>
 
           <div className="navbar-actions">
