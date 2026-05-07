@@ -6,13 +6,18 @@ const HeroCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const timeoutRef = useRef(null);
+  const endedHandlerRef = useRef(null);
 
   // slides: mix of video and image. Sequence: video(brand1) -> image(brand2) -> video(brand1) -> image(brand3)
   const slides = [
-    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG', alt: 'Brand Video' },
-    { type: 'image', url: '/nitish_brand-2.JPG', alt: 'Premium Style' },
-    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG', alt: 'Brand Video' },
-    { type: 'image', url: '/nitish_brand-3.JPG', alt: 'Elegant Fashion' },
+    // 1) Intro video (poster shows last-name closeup)
+    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG', alt: 'Brand Video', focus: 'name' },
+    // 2) Closeup image 1 (name)
+    { type: 'image', url: '/nitish_brand-1.JPG', alt: 'Name Closeup 1', focus: 'name' },
+    // 3) Closeup image 2 (name)
+    { type: 'image', url: '/nitish_brand-2.JPG', alt: 'Name Closeup 2', focus: 'name' },
+    // 4) Closeup image 3 (name)
+    { type: 'image', url: '/nitish_brand-3.JPG', alt: 'Name Closeup 3', focus: 'name' },
   ];
 
   useEffect(() => {
@@ -21,7 +26,8 @@ const HeroCarousel = () => {
     const schedule = (index) => {
       if (!mounted) return;
       const slide = slides[index];
-      const duration = slide.type === 'video' ? 2000 : 3500; // video 2s, images ~3.5s
+      // Give a longer fallback for video (video's natural end will advance it via 'ended')
+      const duration = slide.type === 'video' ? 6000 : 3500; // video fallback 6s, images ~3.5s
       timeoutRef.current = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
       }, duration);
@@ -56,17 +62,35 @@ const HeroCarousel = () => {
           v.pause();
         } catch (e) {}
       });
+
+      // clean previous ended handler
+      if (endedHandlerRef.current && endedHandlerRef.current.video) {
+        try {
+          endedHandlerRef.current.video.removeEventListener('ended', endedHandlerRef.current.handler);
+        } catch (e) {}
+        endedHandlerRef.current = null;
+      }
+
       const active = carouselRef.current.querySelector('.carousel-slide.active');
       if (active) {
         const activeVideo = active.querySelector('video');
         if (activeVideo) {
-          // muted videos should autoplay; ensure play() is called
+          // ensure video is at start and attempt to play
           activeVideo.currentTime = 0;
           activeVideo.play().catch(() => {});
+
+          // advance on ended event for a reliable transition after the video finishes
+          const handleEnded = () => {
+            setCurrentIndex((prev) => (prev + 1) % slides.length);
+          };
+          try {
+            activeVideo.addEventListener('ended', handleEnded);
+            endedHandlerRef.current = { video: activeVideo, handler: handleEnded };
+          } catch (e) {}
         }
       }
 
-      // reschedule next based on current slide type
+      // reschedule next as a fallback (some browsers block autoplay/ended may not fire)
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       const slide = slides[currentIndex];
       const duration = slide.type === 'video' ? 2000 : 3500;
@@ -98,9 +122,22 @@ const HeroCarousel = () => {
         {slides.map((slide, index) => (
           <div key={index} className={`carousel-slide ${index === currentIndex ? 'active' : ''}`}>
             {slide.type === 'image' ? (
-              <img src={slide.url} alt={slide.alt} className="carousel-image" loading={index === 0 ? 'eager' : 'lazy'} />
+              <img
+                src={slide.url}
+                alt={slide.alt}
+                className={`carousel-image ${slide.focus ? `focus-${slide.focus}` : ''}`}
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
             ) : (
-              <video className="carousel-image" src={slide.src} poster={slide.poster} muted playsInline preload="auto" />
+                  <video
+                    className={`carousel-image ${slide.focus ? `focus-${slide.focus}` : ''}`}
+                    src={slide.src}
+                    poster={slide.poster}
+                    muted
+                    autoPlay
+                    playsInline
+                    preload="auto"
+                  />
             )}
             <div className="carousel-overlay"></div>
             <div className="carousel-gradient"></div>

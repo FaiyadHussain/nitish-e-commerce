@@ -272,10 +272,10 @@ const MobileHome = () => {
           <img src="/nitish_brand-3.JPG" alt="brand 3" className="mobile-brand-img" />
         </div> */}
 
-        <div className="hero-content-mobile">
+        {/* <div className="hero-content-mobile">
           <h1 className="hero-brand-name">JACOB ATELIER</h1>
           <p className="hero-tagline">Timeless Elegance</p>
-        </div>
+        </div> */}
 
         <div ref={scrollIndicatorRef} className="scroll-indicator">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

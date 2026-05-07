@@ -24,8 +24,20 @@ const Home = () => {
   const productsRef = useRef(null);
   const rightSideRef = useRef(null);
   const videoRef = useRef(null);
+  const img1Ref = useRef(null);
+  const img2Ref = useRef(null);
+  const img3Ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [videoPlaying, setVideoPlaying] = useState(true);
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const timeoutRef = useRef(null);
+
+  // Background media sequence: video -> image1 -> image2 -> image3 -> loop
+  const backgroundMedia = [
+    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG' },
+    { type: 'image', src: '/nitish_brand-1.JPG', ref: img1Ref },
+    { type: 'image', src: '/nitish_brand-2.JPG', ref: img2Ref },
+    { type: 'image', src: '/nitish_brand-3.JPG', ref: img3Ref },
+  ];
 
   useEffect(() => {
     // Check if mobile
@@ -203,8 +215,85 @@ const Home = () => {
     return () => {
       window.removeEventListener('resize', checkMobile);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
+
+  // Handle background media sequence
+  useEffect(() => {
+    const currentMedia = backgroundMedia[currentMediaIndex];
+    
+    const switchToNext = () => {
+      setCurrentMediaIndex((prev) => (prev + 1) % backgroundMedia.length);
+    };
+
+    if (currentMedia.type === 'video') {
+      // For video: wait for it to end or set a timeout
+      const videoElement = videoRef.current;
+      if (videoElement) {
+        videoElement.currentTime = 0;
+        videoElement.play().catch(err => console.log('Video play error:', err));
+        
+        const handleVideoEnd = () => {
+          switchToNext();
+        };
+        
+        videoElement.addEventListener('ended', handleVideoEnd);
+        
+        // Fallback timeout in case 'ended' event doesn't fire
+        timeoutRef.current = setTimeout(() => {
+          switchToNext();
+        }, 6000);
+        
+        return () => {
+          videoElement.removeEventListener('ended', handleVideoEnd);
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+      }
+    } else {
+      // For images: show for 3.5 seconds then switch
+      timeoutRef.current = setTimeout(() => {
+        switchToNext();
+      }, 3500);
+      
+      return () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      };
+    }
+  }, [currentMediaIndex]);
+
+  // Fade transition between media
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    const img1 = img1Ref.current;
+    const img2 = img2Ref.current;
+    const img3 = img3Ref.current;
+    const images = [img1, img2, img3];
+    const currentMedia = backgroundMedia[currentMediaIndex];
+
+    if (currentMedia.type === 'video') {
+      // Fade out all images, fade in video
+      gsap.to(videoElement, { opacity: 1, duration: 0.8 });
+      images.forEach(img => {
+        if (img) gsap.to(img, { opacity: 0, duration: 0.8 });
+      });
+    } else {
+      // Fade out video, fade in current image
+      gsap.to(videoElement, { opacity: 0, duration: 0.8 });
+      
+      // Map currentMediaIndex to images array index (backgroundMedia: [video, img1, img2, img3])
+      const activeImageIndex = currentMediaIndex - 1; // image refs array is 0-based
+
+      images.forEach((img, idx) => {
+        if (!img) return;
+        if (idx === activeImageIndex && activeImageIndex >= 0) {
+          gsap.to(img, { opacity: 1, duration: 0.8 });
+        } else {
+          gsap.to(img, { opacity: 0, duration: 0.8 });
+        }
+      });
+    }
+  }, [currentMediaIndex]);
 
   const featuredProducts = products.slice(0, 4);
 
@@ -218,6 +307,42 @@ const Home = () => {
       <AnimatedBackground />
       {/* Hero Section */}
       <section ref={heroRef} className="hero-section">
+        {/* Background: video + sequential images */}
+        <div className="hero-bg">
+          <video
+            ref={videoRef}
+            className="hero-bg-video"
+            src="/nitish-e-vdo-mp4.mp4"
+            poster="/nitish_brand-1.JPG"
+            muted
+            playsInline
+            preload="auto"
+            style={{ opacity: backgroundMedia[currentMediaIndex].type === 'video' ? 1 : 0 }}
+          />
+          <img
+            ref={img1Ref}
+            className="hero-bg-image"
+            src="/nitish_brand-1.JPG"
+            alt="Background 1"
+            style={{ opacity: 0 }}
+          />
+          <img
+            ref={img2Ref}
+            className="hero-bg-image"
+            src="/nitish_brand-2.JPG"
+            alt="Background 2"
+            style={{ opacity: 0 }}
+          />
+          <img
+            ref={img3Ref}
+            className="hero-bg-image"
+            src="/nitish_brand-3.JPG"
+            alt="Background 3"
+            style={{ opacity: 0 }}
+          />
+          <div className="hero-bg-overlay"></div>
+        </div>
+        
         <div className="hero-content">
           <div className="hero-text">
             <h1 ref={titleRef} className="hero-title">
@@ -239,16 +364,10 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className="hero-right-side">
-            <div ref={rightSideRef} className="hero-animated-content">
-              {/* Hero Carousel */}
-              <HeroCarousel />
-            </div>
-           
-          </div>
         </div>
       </section>
 
+      {/* Rest of your sections remain the same */}
       {/* Marquee Section */}
       <section className="marquee-section">
         <MarqueeText text="JACOB ATELIER • PREMIUM QUALITY • TIMELESS STYLE • " />
@@ -397,4 +516,3 @@ const Home = () => {
 };
 
 export default Home;
-
