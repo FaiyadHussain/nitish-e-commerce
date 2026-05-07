@@ -243,6 +243,7 @@ const Home = () => {
               {/* Hero Carousel */}
               <HeroCarousel />
             </div>
+           
           </div>
         </div>
       </section>

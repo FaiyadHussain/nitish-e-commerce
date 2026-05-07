@@ -8,23 +8,20 @@ const HeroCarousel = () => {
   const intervalRef = useRef(null);
 
   const images = [
-    {
-      url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=2000&q=80',
-      alt: 'Luxury Fashion Collection'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=2000&q=80',
-      alt: 'Premium Style'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=2000&q=80',
-      alt: 'Elegant Fashion'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=2000&q=80',
-      alt: 'Timeless Elegance'
-    }
-  ];
+  {
+    url: '/nitish_brand-1.JPG',
+    alt: 'Luxury Fashion Collection'
+  },
+  {
+    url: '/nitish_brand-2.JPG',
+    alt: 'Premium Style'
+  },
+  {
+    url: '/nitish_brand-3.JPG',
+    alt: 'Elegant Fashion'
+  },
+ 
+];
 
   useEffect(() => {
     // Auto-rotate carousel

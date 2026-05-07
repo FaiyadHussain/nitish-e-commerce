@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -13,12 +13,18 @@ const MobileHome = () => {
   const productStoryRef = useRef(null);
   const menWomenRef = useRef(null);
   const collectionCardsRef = useRef(null);
+  const [mobileHeroIndex, setMobileHeroIndex] = useState(0);
   const descriptionRef = useRef(null);
   const imageScrollRef = useRef(null);
   const ctaRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    // Rotate mobile hero background images
+    const mobileImages = ['/nitish_brand-1.JPG', '/nitish_brand-2.JPG', '/nitish_brand-3.JPG'];
+    const rotate = () => setMobileHeroIndex((prev) => (prev + 1) % mobileImages.length);
+    const mobileInterval = setInterval(rotate, 3500);
 
     // Hero Section Animation
     if (heroRef.current) {
@@ -237,6 +243,7 @@ const MobileHome = () => {
     }
 
     return () => {
+      clearInterval(mobileInterval);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -251,12 +258,11 @@ const MobileHome = () => {
   return (
     <div className="mobile-home">
       <AnimatedBackground variant="default" intensity="low" />
-      
       {/* SECTION 1: FULL-SCREEN HERO */}
       <section ref={heroRef} className="hero-section-mobile">
         <div className="hero-image-wrapper">
           <img
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=80"
+            src={["/nitish_brand-1.JPG","/nitish_brand-2.JPG","/nitish_brand-3.JPG"][mobileHeroIndex]}
             alt="Luxury Fashion"
             className="hero-image"
           />

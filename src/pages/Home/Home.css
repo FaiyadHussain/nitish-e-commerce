@@ -54,6 +54,33 @@
   height: 600px;
 }
 
+.brand-stack {
+  position: absolute;
+  top: 20%;
+  right: -70px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 6;
+  align-items: center;
+}
+
+.brand-img {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  background: #fff;
+  padding: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brand-img:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
 .hero-animated-content {
   position: relative;
   width: 100%;
@@ -381,6 +408,10 @@
   .hero-right-side {
     height: 400px;
     order: -1;
+  }
+
+  .brand-stack {
+    display: none;
   }
 
   .hero-3d-character {

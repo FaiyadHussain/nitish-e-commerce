@@ -3,10 +3,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 0;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  z-index: 1000;
+  padding: 1rem 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
   transition: all 0.3s ease;
 }
 
@@ -33,11 +33,11 @@
 }
 
 .logo-img {
-  height: 160px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
-  margin: -30px 0;
+  margin: 0;
 }
 
 .navbar-logo:hover .logo-img {
@@ -137,54 +137,52 @@
   padding: 5px;
 }
 
-.hamburger {
-  width: 25px;
-  height: 2px;
-  background-color: #0a0a0a;
-  transition: all 0.3s ease;
-  position: relative;
+.menu-icon {
+  stroke: currentColor;
+  color: #0a0a0a;
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: block;
+}
+.menu-icon:hover {
+  transform: scale(1.05);
 }
 
-.hamburger::before,
-.hamburger::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 2px;
-  background-color: #0a0a0a;
-  transition: all 0.3s ease;
-}
+/* Mobile / hero overlay: make navbar icons and logo visible on top of images */
+@media (max-width: 968px) {
+  .navbar {
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.0));
+  }
 
-.hamburger::before {
-  transform: translateY(-8px);
-}
+  .navbar .navbar-icon,
+  .navbar .menu-icon,
+  .navbar .navbar-menu-btn svg,
+  .navbar .navbar-icon svg {
+    color: #fff;
+    stroke: #fff;
+    fill: none;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45));
+  }
 
-.hamburger::after {
-  transform: translateY(8px);
-}
+  .navbar .navbar-logo .logo-img {
+    filter: invert(1) brightness(2) saturate(0.9);
+    height: 46px;
+  }
 
-.hamburger.active {
-  background-color: transparent;
-}
-
-.hamburger.active::before {
-  transform: rotate(45deg);
-}
-
-.hamburger.active::after {
-  transform: rotate(-45deg);
+  .navbar .navbar-link {
+    color: rgba(255,255,255,0.95);
+  }
 }
 
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 300px;
+  left: 0;
+  width: 320px;
   height: 100vh;
   background-color: #ffffff;
   z-index: 2000;
   padding: 2rem;
-  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu-header {
@@ -197,7 +195,7 @@
 }
 
 .logo-img-mobile {
-  height: 100px;
+  height: 80px;
   width: auto;
   object-fit: contain;
 }
@@ -253,6 +251,17 @@
 
   .navbar-menu-btn {
     display: flex;
+  }
+
+  /* Make mobile menu full-screen and above navbar on smaller screens */
+  .mobile-menu {
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 10001; /* higher than navbar */
+    box-shadow: none;
+    padding: 2.25rem 1.25rem;
   }
 
   .navbar-logo {

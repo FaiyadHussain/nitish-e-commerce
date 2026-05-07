@@ -163,6 +163,33 @@
   animation: progress 4s linear infinite;
 }
 
+.brand-stack-carousel {
+  position: absolute;
+  top: 20%;
+  right: -72px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 8;
+  align-items: center;
+}
+
+.brand-img-carousel {
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  background: #fff;
+  padding: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brand-img-carousel:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
 @keyframes progress {
   0% {
     width: 0%;
@@ -198,6 +225,10 @@
 
   .carousel-dot.active {
     width: 24px;
+  }
+
+  .brand-stack-carousel {
+    display: none;
   }
 }
 
