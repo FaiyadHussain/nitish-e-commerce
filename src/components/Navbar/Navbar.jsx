@@ -124,6 +124,9 @@ const Navbar = () => {
             <li className="nav-dropdown">
               <span className="navbar-link">WOMEN</span>
               <div className="dropdown-menu">
+                <div className="coming-soon-overlay">
+                  <span>Coming Soon</span>
+                </div>
                 <div className="dropdown-col">
                   <div className="dropdown-heading">Top Wear</div>
                   <ul>
@@ -140,15 +143,17 @@ const Navbar = () => {
                   <div className="dropdown-heading">Accessories</div>
                   <ul>
                     <li><Link to="/shop?category=WomenAccessories">Accessories</Link></li>
-                    <li className="coming-soon">Coming Soon</li>
                   </ul>
                 </div>
               </div>
             </li>
 
- <li className="nav-dropdown">
+            <li className="nav-dropdown">
               <span className="navbar-link">Accessories</span>
               <div className="dropdown-menu">
+                <div className="coming-soon-overlay">
+                  <span>Coming Soon</span>
+                </div>
                 <div className="dropdown-col">
                   <div className="dropdown-heading">Top Wear</div>
                   <ul>
@@ -165,7 +170,6 @@ const Navbar = () => {
                   <div className="dropdown-heading">Accessories</div>
                   <ul>
                     <li><Link to="/shop?category=WomenAccessories">Accessories</Link></li>
-                    <li className="coming-soon">Coming Soon</li>
                   </ul>
                 </div>
               </div>

@@ -107,11 +107,11 @@
   background: #ffffff;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   opacity: 0;
   transform: translateY(-8px) scale(0.98);
   pointer-events: none;
-  transition: opacity 220ms cubic-bezier(.2,.9,.2,1), transform 220ms cubic-bezier(.2,.9,.2,1);
+  transition: opacity 220ms cubic-bezier(.2, .9, .2, 1), transform 220ms cubic-bezier(.2, .9, .2, 1);
   z-index: 9999;
 }
 
@@ -159,7 +159,7 @@
   background: #fff;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   display: none;
   min-width: 160px;
 }
@@ -171,6 +171,30 @@
 .coming-soon {
   color: #888;
   font-style: italic;
+}
+
+.coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 8px;
+}
+
+.coming-soon-overlay span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .navbar-left-mobile {
@@ -230,6 +254,7 @@
   transition: transform 0.2s ease, color 0.2s ease;
   display: block;
 }
+
 .menu-icon:hover {
   transform: scale(1.05);
 }
@@ -237,7 +262,7 @@
 /* Mobile / hero overlay: make navbar icons and logo visible on top of images */
 @media (max-width: 968px) {
   .navbar {
-    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.0));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.0));
   }
 
   .navbar .navbar-icon,
@@ -247,7 +272,7 @@
     color: #fff;
     stroke: #fff;
     fill: none;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.45));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
   }
 
   .navbar .navbar-logo .logo-img {
@@ -257,7 +282,7 @@
   }
 
   .navbar .navbar-link {
-    color: rgba(255,255,255,0.95);
+    color: rgba(255, 255, 255, 0.95);
   }
 }
 
@@ -347,7 +372,8 @@
     right: 0;
     width: 100%;
     max-width: 100%;
-    z-index: 10001; /* higher than navbar */
+    z-index: 10001;
+    /* higher than navbar */
     box-shadow: none;
     padding: 2.25rem 1.25rem;
   }
@@ -388,4 +414,3 @@
     height: 20px;
   }
 }
-
