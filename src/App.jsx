@@ -27,21 +27,9 @@ const AppContent = () => {
 
   useSmoothScroll();
 
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <Loader onComplete={() => setIsLoading(false)} />;
-  }
-
   return (
     <>
+      {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
       <Cursor />
       <Navbar />
       <AnimatePresence mode="wait">
