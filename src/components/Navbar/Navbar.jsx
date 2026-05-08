@@ -9,6 +9,7 @@ import './Navbar.css';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState(null);
   const location = useLocation();
   const navbarRef = useRef(null);
   const { getCartItemsCount } = useCart();
@@ -225,17 +226,156 @@ const Navbar = () => {
               <button onClick={() => setIsMenuOpen(false)}>✕</button>
             </div>
             <ul className="mobile-menu-links">
-              {navLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={location.pathname === link.path ? 'active' : ''}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link to="/" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+              </li>
+              <li>
+                <Link to="/shop" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/shop' ? 'active' : ''}>Shop</Link>
+              </li>
+              
+              {/* MEN Mobile Dropdown */}
+              <li className="mobile-nav-dropdown">
+                <div 
+                  className="mobile-dropdown-header" 
+                  onClick={() => setMobileDropdown(mobileDropdown === 'men' ? null : 'men')}
+                >
+                  <span className={location.pathname.startsWith('/men') ? 'active' : ''}>MEN</span>
+                  <span className={`dropdown-arrow ${mobileDropdown === 'men' ? 'open' : ''}`}>▼</span>
+                </div>
+                <AnimatePresence>
+                  {mobileDropdown === 'men' && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="mobile-dropdown-content"
+                    >
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Top Rated</div>
+                        <ul>
+                          <li><Link to="/shop?category=T-Shirts" onClick={() => setIsMenuOpen(false)}>T-Shirts</Link></li>
+                          <li><Link to="/shop?category=Shirts" onClick={() => setIsMenuOpen(false)}>Shirts</Link></li>
+                          <li><Link to="/shop?category=SweatShirts" onClick={() => setIsMenuOpen(false)}>SweatShirts</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Hoodies</div>
+                        <ul>
+                          <li><Link to="/shop?category=Hoodies" onClick={() => setIsMenuOpen(false)}>Hoodies</Link></li>
+                          <li><Link to="/shop?category=Jackets" onClick={() => setIsMenuOpen(false)}>Jackets</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Bottom Wear</div>
+                        <ul>
+                          <li><Link to="/shop?category=Jeans" onClick={() => setIsMenuOpen(false)}>Jeans</Link></li>
+                          <li><Link to="/shop?category=Trousers" onClick={() => setIsMenuOpen(false)}>Trousers</Link></li>
+                          <li><Link to="/shop?category=Formal" onClick={() => setIsMenuOpen(false)}>Formal</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Accessories</div>
+                        <ul>
+                          <li><Link to="/shop?category=Accessories" onClick={() => setIsMenuOpen(false)}>Accessories</Link></li>
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
+
+              {/* WOMEN Mobile Dropdown */}
+              <li className="mobile-nav-dropdown">
+                <div 
+                  className="mobile-dropdown-header" 
+                  onClick={() => setMobileDropdown(mobileDropdown === 'women' ? null : 'women')}
+                >
+                  <span className={location.pathname.startsWith('/women') ? 'active' : ''}>WOMEN</span>
+                  <span className={`dropdown-arrow ${mobileDropdown === 'women' ? 'open' : ''}`}>▼</span>
+                </div>
+                <AnimatePresence>
+                  {mobileDropdown === 'women' && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="mobile-dropdown-content relative-coming-soon"
+                    >
+                      <div className="coming-soon-overlay">
+                        <span>Coming Soon</span>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Top Wear</div>
+                        <ul>
+                          <li><Link to="/shop?category=WomenTopWear" onClick={() => setIsMenuOpen(false)}>Top Wear</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Bottom Wear</div>
+                        <ul>
+                          <li><Link to="/shop?category=WomenBottomWear" onClick={() => setIsMenuOpen(false)}>Bottom Wear</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Accessories</div>
+                        <ul>
+                          <li><Link to="/shop?category=WomenAccessories" onClick={() => setIsMenuOpen(false)}>Accessories</Link></li>
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
+
+              {/* ACCESSORIES Mobile Dropdown */}
+              <li className="mobile-nav-dropdown">
+                <div 
+                  className="mobile-dropdown-header" 
+                  onClick={() => setMobileDropdown(mobileDropdown === 'accessories' ? null : 'accessories')}
+                >
+                  <span className={location.pathname.startsWith('/accessories') ? 'active' : ''}>ACCESSORIES</span>
+                  <span className={`dropdown-arrow ${mobileDropdown === 'accessories' ? 'open' : ''}`}>▼</span>
+                </div>
+                <AnimatePresence>
+                  {mobileDropdown === 'accessories' && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="mobile-dropdown-content relative-coming-soon"
+                    >
+                      <div className="coming-soon-overlay">
+                        <span>Coming Soon</span>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Top Wear</div>
+                        <ul>
+                          <li><Link to="/shop?category=WomenTopWear" onClick={() => setIsMenuOpen(false)}>Top Wear</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Bottom Wear</div>
+                        <ul>
+                          <li><Link to="/shop?category=WomenBottomWear" onClick={() => setIsMenuOpen(false)}>Bottom Wear</Link></li>
+                        </ul>
+                      </div>
+                      <div className="mobile-dropdown-col">
+                        <div className="mobile-dropdown-heading">Accessories</div>
+                        <ul>
+                          <li><Link to="/shop?category=WomenAccessories" onClick={() => setIsMenuOpen(false)}>Accessories</Link></li>
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
+
+              <li>
+                <Link to="/about" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/about' ? 'active' : ''}>About</Link>
+              </li>
+              <li>
+                <Link to="/contact" onClick={() => setIsMenuOpen(false)} className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
+              </li>
             </ul>
           </motion.div>
         )}
