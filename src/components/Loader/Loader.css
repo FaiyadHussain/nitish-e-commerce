@@ -14,9 +14,9 @@
 
 .loader-panel {
   position: absolute;
-  top: 0;
-  width: 20%;
-  height: 100vh;
+  top: -1%;
+  width: calc(20% + 2px);
+  height: 102vh;
   will-change: transform;
 }
 
@@ -45,14 +45,13 @@
   align-items: center;
 }
 
-.loader-logo-img {
+.loader-logo-svg {
   height: 250px;
   width: auto;
   display: block;
   margin: 0 auto 3rem;
-  filter: contrast(1.1);
-  object-fit: contain;
   will-change: transform, opacity;
+  overflow: visible;
 }
 
 .progress-container {
