@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedBackground from '../../components/AnimatedBackground/AnimatedBackground';
 import AnimatedButton from '../../components/AnimatedButton/AnimatedButton';
 import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
+import FAQ from '../../components/FAQ/FAQ';
 import './MobileHome.css';
 
 const MobileHome = () => {
@@ -288,7 +289,7 @@ const MobileHome = () => {
       <section ref={productStoryRef} className="product-story-section">
         <div className="product-story-image">
           <img
-            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80"
+            src="/nitish-collection.png"
             alt="Product Story"
           />
         </div>
@@ -363,13 +364,15 @@ const MobileHome = () => {
       {/* SECTION 6: FULL IMAGE SCROLL */}
       <section ref={imageScrollRef} className="image-scroll-section">
         <div className="scroll-image">
-          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80" alt="Fashion" />
+          <img src="/nitish-brandshirt-1.png" alt="Fashion" />
         </div>
         <div className="scroll-text">
           <h2>Timeless Style</h2>
           <p>Where elegance meets modern sophistication</p>
         </div>
       </section>
+
+      <FAQ />
 
       {/* SECTION 7: FINAL CTA */}
       <section ref={ctaRef} className="final-cta-section">

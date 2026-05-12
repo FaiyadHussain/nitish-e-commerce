@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { scrollReveal, staggerFadeIn } from '../../animations/gsapAnimations';
 import AnimatedBackground from '../../components/AnimatedBackground/AnimatedBackground';
@@ -7,13 +8,29 @@ import { products } from '../../data/products';
 import './Shop.css';
 
 const Shop = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const initialCategory = searchParams.get('category') || 'All';
+  const initialGenderRaw = searchParams.get('gender');
+  const initialGender = initialGenderRaw ? initialGenderRaw.charAt(0).toUpperCase() + initialGenderRaw.slice(1).toLowerCase() : 'All';
+
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedGender, setSelectedGender] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  const [selectedGender, setSelectedGender] = useState(initialGender);
   const productsRef = useRef(null);
 
   const categories = ['All', ...new Set(products.map((p) => p.category))];
   const genders = ['All', 'Men', 'Women'];
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const categoryParam = searchParams.get('category') || 'All';
+    const genderParamRaw = searchParams.get('gender');
+    const genderParam = genderParamRaw ? genderParamRaw.charAt(0).toUpperCase() + genderParamRaw.slice(1).toLowerCase() : 'All';
+
+    setSelectedCategory(categoryParam);
+    setSelectedGender(genderParam);
+  }, [location.search]);
 
   useEffect(() => {
     let filtered = products;

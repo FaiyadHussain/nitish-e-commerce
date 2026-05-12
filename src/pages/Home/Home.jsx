@@ -12,6 +12,7 @@ import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
 import MarqueeText from '../../components/MarqueeText/MarqueeText';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import AnimatedButton from '../../components/AnimatedButton/AnimatedButton';
+import FAQ from '../../components/FAQ/FAQ';
 import MobileHome from './MobileHome';
 import { products } from '../../data/products';
 import './Home.css';
@@ -32,7 +33,7 @@ const Home = () => {
   // Background media sequence: video -> image1 -> image2 -> image3 -> loop
   // Only play video, then show nitish_brand-3.JPG as the single closeup image
   const backgroundMedia = [
-    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG' },
+    { type: 'video', src: '/nitish-e-vdo-mp4.mp4' },
     { type: 'image', src: '/nitish_brand-3.JPG', ref: img3Ref },
   ];
 
@@ -294,7 +295,6 @@ const Home = () => {
             ref={videoRef}
             className="hero-bg-video"
             src="/nitish-e-vdo-mp4.mp4"
-            poster="/nitish_brand-1.JPG"
             muted
             playsInline
             preload="auto"
@@ -417,7 +417,7 @@ const Home = () => {
             </div>
             <div className="showcase-item">
               <div className="showcase-image">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800" alt="Collection" />
+                <img src="/nitish-collection.png" alt="Collection" />
               </div>
               <div className="showcase-content">
                 <h3>Limited Edition</h3>
@@ -428,7 +428,7 @@ const Home = () => {
             </div>
             <div className="showcase-item">
               <div className="showcase-image">
-                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800" alt="Collection" />
+                <img src="/nitish-brandshirt-1.png" alt="Collection" />
               </div>
               <div className="showcase-content">
                 <h3>Premium Line</h3>
@@ -464,6 +464,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <FAQ />
 
       {/* Newsletter Section */}
       <section className="newsletter-section section-padding">

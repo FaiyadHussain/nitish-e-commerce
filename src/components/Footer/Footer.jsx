@@ -49,17 +49,16 @@ const Footer = () => {
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-              <li><a href="#">Careers</a></li>
+              <li><a href="#">FAQ's</a></li>
+              <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </div>
 
           <div className="footer-section">
-            <h4 className="footer-title">Support</h4>
+            <h4 className="footer-title">Legal & Policies</h4>
             <ul className="footer-links">
-              <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">Returns</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Refunds & Cancellations</a></li>
             </ul>
           </div>
         </div>

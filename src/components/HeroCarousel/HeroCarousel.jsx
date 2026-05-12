@@ -10,7 +10,7 @@ const HeroCarousel = () => {
 
   // slides: only intro video then the final closeup image (nitish_brand-3)
   const slides = [
-    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', poster: '/nitish_brand-1.JPG', alt: 'Brand Video', focus: 'name' },
+    { type: 'video', src: '/nitish-e-vdo-mp4.mp4', alt: 'Brand Video', focus: 'name' },
     { type: 'image', url: '/nitish_brand-3.JPG', alt: 'Name Closeup', focus: 'name' },
   ];
 
@@ -126,7 +126,6 @@ const HeroCarousel = () => {
                   <video
                     className={`carousel-image ${slide.focus ? `focus-${slide.focus}` : ''}`}
                     src={slide.src}
-                    poster={slide.poster}
                     muted
                     autoPlay
                     playsInline

@@ -84,20 +84,20 @@ const Navbar = () => {
                 <div className="dropdown-col">
                   <div className="dropdown-heading">Top Rated</div>
                   <ul>
-                    <li><Link to="/shop?category=T-Shirts">T-Shirts</Link></li>
-                    <li><Link to="/shop?category=Shirts">Shirts</Link></li>
-                    <li><Link to="/shop?category=SweatShirts">SweatShirts</Link></li>
+                    <li><Link to="/shop?gender=men&category=T-Shirts">T-Shirts</Link></li>
+                    <li><Link to="/shop?gender=men&category=Shirts">Shirts</Link></li>
+                    <li><Link to="/shop?gender=men&category=SweatShirts">SweatShirts</Link></li>
                   </ul>
                 </div>
 
                 <div className="dropdown-col">
                   <div className="dropdown-heading">Hoodies</div>
                   <ul>
-                    <li><Link to="/shop?category=Hoodies">Hoodies</Link></li>
+                    <li><Link to="/shop?gender=men&category=Hoodies">Hoodies</Link></li>
                     <li className="submenu-parent">Jackets
                       {/* <ul className="submenu">
-                        <li><Link to="/shop?category=Jackets">Light Jackets</Link></li>
-                        <li><Link to="/shop?category=Leather">Leather Jackets</Link></li>
+                        <li><Link to="/shop?gender=men&category=Jackets">Light Jackets</Link></li>
+                        <li><Link to="/shop?gender=men&category=Leather">Leather Jackets</Link></li>
                       </ul> */}
                     </li>
                   </ul>
@@ -106,16 +106,16 @@ const Navbar = () => {
                 <div className="dropdown-col">
                   <div className="dropdown-heading">Bottom Wear</div>
                   <ul>
-                    <li><Link to="/shop?category=Jeans">Jeans</Link></li>
-                    <li><Link to="/shop?category=Trousers">Trousers</Link></li>
-                    <li><Link to="/shop?category=Formal">Formal</Link></li>
+                    <li><Link to="/shop?gender=men&category=Jeans">Jeans</Link></li>
+                    <li><Link to="/shop?gender=men&category=Trousers">Trousers</Link></li>
+                    <li><Link to="/shop?gender=men&category=Formal">Formal</Link></li>
                   </ul>
                 </div>
 
                 <div className="dropdown-col">
                   <div className="dropdown-heading">Accessories</div>
                   <ul>
-                    <li><Link to="/shop?category=Accessories">Accessories</Link></li>
+                    <li><Link to="/shop?gender=men&category=Accessories">Accessories</Link></li>
                   </ul>
                 </div>
               </div>
@@ -156,15 +156,9 @@ const Navbar = () => {
                   <span>Coming Soon</span>
                 </div>
                 <div className="dropdown-col">
-                  <div className="dropdown-heading">Top Wear</div>
+                  <div className="dropdown-heading">Featured</div>
                   <ul>
-                    <li><Link to="/shop?category=WomenTopWear">Top Wear</Link></li>
-                  </ul>
-                </div>
-                <div className="dropdown-col">
-                  <div className="dropdown-heading">Bottom Wear</div>
-                  <ul>
-                    <li><Link to="/shop?category=WomenBottomWear">Bottom Wear</Link></li>
+                    <li><Link to="/shop?category=Accessories">All Accessories</Link></li>
                   </ul>
                 </div>
                 <div className="dropdown-col">
@@ -253,30 +247,30 @@ const Navbar = () => {
                       <div className="mobile-dropdown-col">
                         <div className="mobile-dropdown-heading">Top Rated</div>
                         <ul>
-                          <li><Link to="/shop?category=T-Shirts" onClick={() => setIsMenuOpen(false)}>T-Shirts</Link></li>
-                          <li><Link to="/shop?category=Shirts" onClick={() => setIsMenuOpen(false)}>Shirts</Link></li>
-                          <li><Link to="/shop?category=SweatShirts" onClick={() => setIsMenuOpen(false)}>SweatShirts</Link></li>
+                          <li><Link to="/shop?gender=men&category=T-Shirts" onClick={() => setIsMenuOpen(false)}>T-Shirts</Link></li>
+                          <li><Link to="/shop?gender=men&category=Shirts" onClick={() => setIsMenuOpen(false)}>Shirts</Link></li>
+                          <li><Link to="/shop?gender=men&category=SweatShirts" onClick={() => setIsMenuOpen(false)}>SweatShirts</Link></li>
                         </ul>
                       </div>
                       <div className="mobile-dropdown-col">
                         <div className="mobile-dropdown-heading">Hoodies</div>
                         <ul>
-                          <li><Link to="/shop?category=Hoodies" onClick={() => setIsMenuOpen(false)}>Hoodies</Link></li>
-                          <li><Link to="/shop?category=Jackets" onClick={() => setIsMenuOpen(false)}>Jackets</Link></li>
+                          <li><Link to="/shop?gender=men&category=Hoodies" onClick={() => setIsMenuOpen(false)}>Hoodies</Link></li>
+                          <li><Link to="/shop?gender=men&category=Jackets" onClick={() => setIsMenuOpen(false)}>Jackets</Link></li>
                         </ul>
                       </div>
                       <div className="mobile-dropdown-col">
                         <div className="mobile-dropdown-heading">Bottom Wear</div>
                         <ul>
-                          <li><Link to="/shop?category=Jeans" onClick={() => setIsMenuOpen(false)}>Jeans</Link></li>
-                          <li><Link to="/shop?category=Trousers" onClick={() => setIsMenuOpen(false)}>Trousers</Link></li>
-                          <li><Link to="/shop?category=Formal" onClick={() => setIsMenuOpen(false)}>Formal</Link></li>
+                          <li><Link to="/shop?gender=men&category=Jeans" onClick={() => setIsMenuOpen(false)}>Jeans</Link></li>
+                          <li><Link to="/shop?gender=men&category=Trousers" onClick={() => setIsMenuOpen(false)}>Trousers</Link></li>
+                          <li><Link to="/shop?gender=men&category=Formal" onClick={() => setIsMenuOpen(false)}>Formal</Link></li>
                         </ul>
                       </div>
                       <div className="mobile-dropdown-col">
                         <div className="mobile-dropdown-heading">Accessories</div>
                         <ul>
-                          <li><Link to="/shop?category=Accessories" onClick={() => setIsMenuOpen(false)}>Accessories</Link></li>
+                          <li><Link to="/shop?gender=men&category=Accessories" onClick={() => setIsMenuOpen(false)}>Accessories</Link></li>
                         </ul>
                       </div>
                     </motion.div>
@@ -348,15 +342,9 @@ const Navbar = () => {
                         <span>Coming Soon</span>
                       </div>
                       <div className="mobile-dropdown-col">
-                        <div className="mobile-dropdown-heading">Top Wear</div>
+                        <div className="mobile-dropdown-heading">Featured</div>
                         <ul>
-                          <li><Link to="/shop?category=WomenTopWear" onClick={() => setIsMenuOpen(false)}>Top Wear</Link></li>
-                        </ul>
-                      </div>
-                      <div className="mobile-dropdown-col">
-                        <div className="mobile-dropdown-heading">Bottom Wear</div>
-                        <ul>
-                          <li><Link to="/shop?category=WomenBottomWear" onClick={() => setIsMenuOpen(false)}>Bottom Wear</Link></li>
+                          <li><Link to="/shop?category=Accessories" onClick={() => setIsMenuOpen(false)}>All Accessories</Link></li>
                         </ul>
                       </div>
                       <div className="mobile-dropdown-col">

@@ -6,14 +6,14 @@ export const useSmoothScroll = () => {
     const isMobile = window.innerWidth <= 768;
     
     const lenis = new Lenis({
-      duration: isMobile ? 0.8 : 1.2,
+      duration: isMobile ? 1.5 : 2.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 0.8, // softer wheel
       smoothTouch: true, // Enable for mobile
-      touchMultiplier: isMobile ? 1.5 : 2,
+      touchMultiplier: isMobile ? 2 : 2.5,
       infinite: false,
     });
 
