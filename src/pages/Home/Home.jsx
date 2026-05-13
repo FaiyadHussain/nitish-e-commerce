@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, ScrollControls, Environment, Stars } from '@react-three/drei';
+import { Environment } from '@react-three/drei';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { textReveal, scrollReveal, staggerFadeIn, fadeIn } from '../../animations/gsapAnimations';
 import HeroModel from '../../three/HeroModel';
-import ScrollCharacter from '../../three/ScrollCharacter';
 import AnimatedBackground from '../../components/AnimatedBackground/AnimatedBackground';
 import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
 import MarqueeText from '../../components/MarqueeText/MarqueeText';
@@ -309,8 +308,17 @@ const Home = () => {
           />
           <div className="hero-bg-overlay"></div>
         </div>
+
+        <div className="hero-canvas-container" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
+          <Canvas dpr={[1, 1.5]} performance={{ min: 0.5 }} gl={{ antialias: false, powerPreference: 'high-performance' }} camera={{ position: [0, 0, 5], fov: 45 }}>
+            <Environment preset="city" />
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1.5} />
+            <HeroModel />
+          </Canvas>
+        </div>
         
-        <div className="hero-content">
+        <div className="hero-content" style={{ zIndex: 2, position: 'relative' }}>
           <div className="hero-text">
             <h1 ref={titleRef} className="hero-title">
               Timeless Elegance

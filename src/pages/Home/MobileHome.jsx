@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Canvas } from '@react-three/fiber';
+import { Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HeroModel from '../../three/HeroModel';
 import AnimatedBackground from '../../components/AnimatedBackground/AnimatedBackground';
 import AnimatedButton from '../../components/AnimatedButton/AnimatedButton';
 import HeroCarousel from '../../components/HeroCarousel/HeroCarousel';
@@ -264,6 +267,14 @@ const MobileHome = () => {
           <HeroCarousel />
 
           <div className="hero-overlay"></div>
+          <div className="hero-canvas-container" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
+            <Canvas dpr={[1, 1.5]} performance={{ min: 0.5 }} gl={{ antialias: false, powerPreference: 'high-performance' }} camera={{ position: [0, 0, 5], fov: 45 }}>
+              <Environment preset="city" />
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1.5} />
+              <HeroModel />
+            </Canvas>
+          </div>
         </div>
 
         {/* Brand images row */}
